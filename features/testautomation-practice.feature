@@ -7,7 +7,7 @@ Feature: Test Automation Practice Website
     # Fill all text fields
     And I fill inputbox "name" with "John Doe"
     And I fill inputbox "email" with "john@example.com"
-    And I fill inputbox "Telephone" with "1234567890"
+    And I fill inputbox "phone" with "1234567890"
     And I fill textarea "address" with "123 Main Street, New York, NY"
     And I wait for 1 seconds
     # Select gender (radio button)

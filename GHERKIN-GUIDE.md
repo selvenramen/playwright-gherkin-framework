@@ -101,6 +101,103 @@ And I take screenshot "after-login"
 When I hover over element "User Menu"
 ```
 
+## Advanced Gherkin Steps
+
+### Text Area (Multi-line Text)
+```gherkin
+When I fill textarea "comments" with "This is a long comment with multiple lines"
+And I fill textarea "address" with "123 Main Street, New York, NY 10001"
+```
+
+### File Upload
+```gherkin
+When I upload file "C:\\Users\\YourName\\Desktop\\document.pdf" to "Choose File"
+And I upload file "C:\\path\\to\\file.txt" to "file-upload"
+```
+**Note:** Use double backslashes `\\` in Windows file paths
+
+### Radio Buttons
+```gherkin
+When I select radio button "Male"
+And I select radio button "Gender" with value "female"
+And I select radio button "Yes"
+```
+
+### Alert/Prompt/Confirm Dialogs
+```gherkin
+When I accept the alert
+When I dismiss the alert
+When I fill alert prompt with "My Response"
+```
+**Important:** Alert handlers MUST be placed BEFORE the action that triggers the alert!
+
+**Example:**
+```gherkin
+Scenario: Test JavaScript Alerts
+  Given I open the URL "https://the-internet.herokuapp.com/javascript_alerts"
+  When I accept the alert
+  And I click button "Click for JS Alert"
+  Then I should see text "You successfully clicked an alert"
+```
+
+### Date Picker
+```gherkin
+When I select date "2024-12-25" in date picker "datePickerMonthYearInput"
+And I select date "2025-01-01" in date picker "startDate"
+```
+
+### Drag and Drop
+```gherkin
+When I drag "A" and drop on "B"
+And I drag "Source Item" and drop on "Target Zone"
+```
+**Note:** This includes visual feedback (yellow/green highlights)
+
+### Double-Click and Right-Click
+```gherkin
+When I double-click element "Double Click Me"
+And I right-click element "Right Click Me"
+```
+
+### Tooltips
+```gherkin
+When I hover over element "Hover me to see" to show tooltip
+```
+
+### Modal/Dialog Windows
+```gherkin
+Then I should see modal with text "This is a small modal"
+When I close the modal
+```
+
+### Multiple Windows/Tabs
+```gherkin
+When I switch to new window
+And I close current tab
+```
+
+### Scrolling
+```gherkin
+When I scroll to element "Submit"
+And I scroll to top
+And I scroll to bottom
+```
+**Note:** Scrolling includes visual feedback (orange highlight)
+
+### Table Verification
+```gherkin
+Then table cell at row 0 column 0 should contain "Last Name"
+And table cell at row 1 column 2 should contain "john@example.com"
+And table should have 5 rows
+```
+
+### Element State Verification
+```gherkin
+Then element "Submit" should be visible
+And element "Save Button" should be enabled
+And element "Delete" should be disabled
+```
+
 ## Complete Example
 
 ```gherkin
@@ -116,8 +213,13 @@ Feature: User Registration
     And I fill inputbox "Email" with "john@example.com"
     And I fill inputbox "Password" with "SecurePass123"
     And I fill inputbox "Confirm Password" with "SecurePass123"
+    And I fill textarea "Bio" with "Software tester with 5 years experience"
+    And I select date "1990-05-15" in date picker "birthDate"
     And I select "United States" from dropdown "Country"
+    And I select radio button "Gender" with value "male"
     And I check checkbox "I agree to terms and conditions"
+    And I upload file "C:\\Users\\John\\Documents\\profile.jpg" to "Choose File"
+    And I scroll to element "Register"
     And I click button "Register"
     And I wait for 3 seconds
     Then I should see text "Registration successful"
@@ -188,6 +290,85 @@ Check these example files in the `features/` folder:
 - `login.feature` - Login test examples
 - `practice-login.feature` - Practice website tests
 - `example.feature` - Various scenario examples
+- `comprehensive-tests.feature` - Complete example with all element types
+
+---
+
+## 📚 Complete Step Reference
+
+### Navigation
+- `Given I open the URL {string}`
+
+### Input Fields
+- `When I fill inputbox {string} with {string}`
+- `When I fill textarea {string} with {string}`
+- `When I fill datepicker {string} with {string}`
+- `When I select date {string} in date picker {string}`
+
+### Click Actions
+- `When I click button {string}`
+- `When I click element {string}`
+- `When I double-click element {string}`
+- `When I right-click element {string}`
+
+### Form Elements
+- `When I select {string} from dropdown {string}`
+- `When I select from dropdown {string} option {string}`
+- `When I check checkbox {string}`
+- `When I uncheck checkbox {string}`
+- `When I select radio button {string}`
+- `When I select radio button {string} with value {string}`
+
+### File Upload
+- `When I upload file {string} to {string}`
+
+### Alerts & Dialogs
+- `When I accept the alert`
+- `When I dismiss the alert`
+- `When I fill alert prompt with {string}`
+
+### Drag & Drop
+- `When I drag {string} and drop on {string}`
+
+### Scrolling
+- `When I scroll to element {string}`
+- `When I scroll to top`
+- `When I scroll to bottom`
+
+### Modals & Windows
+- `Then I should see modal with text {string}`
+- `When I close the modal`
+- `When I switch to new window`
+- `When I open new tab`
+- `When I close current tab`
+
+### Tooltips & Hover
+- `When I hover over element {string}`
+- `When I hover over element {string} to show tooltip`
+
+### Keyboard
+- `When I press key {string}`
+
+### Wait & Screenshot
+- `When I wait for {int} seconds`
+- `When I take screenshot {string}`
+
+### Text Verification
+- `Then I should see text {string}`
+- `Then I should not see text {string}`
+
+### URL Verification
+- `Then URL should contain {string}`
+
+### Element State
+- `Then element {string} should be visible`
+- `Then element {string} should be hidden`
+- `Then element {string} should be enabled`
+- `Then element {string} should be disabled`
+
+### Table Verification
+- `Then table cell at row {int} column {int} should contain {string}`
+- `Then table should have {int} rows`
 
 ---
 
