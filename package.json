@@ -1,0 +1,26 @@
+{
+  "name": "simple-playwright-framework",
+  "version": "1.0.0",
+  "description": "A simple framework for non-technical users to write Playwright tests",
+  "main": "index.js",
+  "scripts": {
+    "generate-steps": "node scripts/generate-steps.js",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:headed": "npx playwright test --headed",
+    "test:specific": "npx playwright test",
+    "test:gherkin": "npm run generate-steps && cucumber-js features/**/*.feature --require-module ts-node/register --require steps/**/*.ts --format progress",
+    "test:gherkin:headed": "npm run generate-steps && HEADLESS=false cucumber-js features/**/*.feature --require-module ts-node/register --require steps/**/*.ts --format progress",
+    "install-browsers": "npx playwright install"
+  },
+  "keywords": ["playwright", "testing", "automation"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.0",
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  }
+}

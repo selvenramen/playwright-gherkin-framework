@@ -1,0 +1,37 @@
+# Ignore node modules
+node_modules/
+
+# Ignore test results
+test-results/
+playwright-report/
+cucumber-report.html
+cucumber.json
+_tmp_practice.html
+
+# Ignore screenshots
+screenshots/
+
+# Auto-generated step definitions (regenerated on each test run)
+steps/common-steps.ts
+
+# Ignore build output
+dist/
+
+# Ignore environment files
+.env
+.env.local
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Keep user-scenarios folder structure but ignore their test files (optional)
+# Uncomment the line below if you don't want to track user test files
+# user-scenarios/*.feature
+# !user-scenarios/TEMPLATE.feature
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
