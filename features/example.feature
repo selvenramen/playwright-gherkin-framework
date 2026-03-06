@@ -13,6 +13,7 @@ Feature: Example Test Scenarios
     And I select "Support" from dropdown "subject"
     And I check checkbox "I agree to terms"
     And I click button "Submit"
+    And I wait for 2 seconds
     Then I should see text "Thank you"
 
   Scenario: Search functionality
