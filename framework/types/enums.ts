@@ -7,8 +7,7 @@ export enum BrowserType {
   FIREFOX = 'firefox',
   WEBKIT = 'webkit',
   CHROME = 'chrome',
-  SAFARI = 'safari',
-  EDGE = 'edge'
+  SAFARI = 'safari'
 }
 
 /**
